@@ -1,0 +1,99 @@
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-box">
+      
+      <div class="contact-info">
+        <h2>¿Listo para el <span class="highlight">Siguiente Nivel</span>?</h2>
+        <p>Únete a nuestra comunidad y sé el primero en probar los lanzamientos exclusivos de 2026.</p>
+        <div class="info-details">
+          <p>📍 Cañete, Lima - Perú</p>
+          <p>📧 soporte@alvarezgames.com</p>
+          <p>🎮 Discord: AlvarezGames_Oficial</p>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3 style="color: white; margin-bottom: 20px; font-size: 1.5rem;">
+          {{ editando ? '📝 Editando Registro #' + contacto.id : '📩 Envíanos un mensaje' }}
+        </h3>
+
+        <form (ngSubmit)="onSubmit()">
+          <div class="input-group">
+            <input type="text" name="nombre" [(ngModel)]="contacto.nombre" placeholder="Nombre completo" required>
+          </div>
+          
+          <div class="input-group">
+            <input type="email" name="email" [(ngModel)]="contacto.email" placeholder="Correo electrónico" required>
+          </div>
+          
+          <div class="input-group">
+            <input type="text" name="asunto" [(ngModel)]="contacto.asunto" placeholder="Asunto (Ej: Soporte, Compra, Error)" required>
+          </div>
+          
+          <div class="input-group">
+            <textarea name="mensaje" [(ngModel)]="contacto.mensaje" placeholder="Escribe tu mensaje detallado aquí..." rows="4" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn-submit" [disabled]="!contacto.nombre || !contacto.email">
+            {{ editando ? 'Guardar Cambios' : 'Enviar Solicitud' }}
+          </button>
+          
+          <button type="button" *ngIf="editando" (click)="resetear()" class="btn-submit" 
+                  style="background: #444; margin-top: 10px; border: 1px solid #666; cursor: pointer;">
+            Cancelar Edición
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="container" style="margin-top: 60px; padding-bottom: 80px;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <h3 style="color: white; font-size: 1.8rem;">📦 Gestión de Mensajes (Admin)</h3>
+    <button type="button" (click)="cargarContactos()" style="background: transparent; border: 1px solid #4e54c8; color: white; cursor: pointer; padding: 5px 15px; border-radius: 20px;">
+      🔄 Refrescar Lista
+    </button>
+  </div>
+
+  <div style="overflow-x: auto; background: rgba(0, 0, 0, 0.4); border-radius: 10px; border: 1px solid #333;">
+    <table style="width: 100%; color: white; border-collapse: collapse; text-align: left;">
+      <thead>
+        <tr style="background: #4e54c8; color: white;">
+          <th style="padding: 15px;">ID</th>
+          <th>Nombre</th>
+          <th>Asunto</th>
+          <th>Mensaje</th>
+          <th style="text-align: center;">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="listado.length === 0">
+          <td colspan="5" style="padding: 20px; text-align: center; color: #888;">
+            No hay registros encontrados en la base de datos.
+          </td>
+        </tr>
+
+        <tr *ngFor="let c of listado" style="border-bottom: 1px solid #222;">
+          <td style="padding: 12px; font-weight: bold; color: #4e54c8;">#{{c.id}}</td>
+          <td>{{c.nombre}}</td>
+          <td><span style="background: rgba(78, 84, 200, 0.2); padding: 2px 8px; border-radius: 4px;">{{c.asunto}}</span></td>
+          <td style="max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #ccc;">
+            {{c.mensaje}}
+          </td>
+          <td style="text-align: center; min-width: 120px;">
+            <button type="button" (click)="prepararEdicion(c)" title="Editar" 
+                    style="background: #ffc107; border: none; cursor:pointer; padding: 8px; border-radius: 5px; margin-right: 8px;">
+              ✏️
+            </button>
+            <button type="button" (click)="borrar(c.id)" title="Eliminar" 
+                    style="background: #dc3545; border: none; color: white; cursor:pointer; padding: 8px; border-radius: 5px;">
+              🗑️
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+/* Configuraciones base para el modo oscuro gamer */
+:root {
+  --primary-color: #6366f1; /* Morado neón */
+  --bg-dark: #0f172a;       /* Azul muy oscuro */
+  --text-light: #f8fafc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Scrollbar personalizada tipo gamer */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}

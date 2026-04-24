@@ -1,0 +1,29 @@
+<section class="catalog" id="catalog">
+  <div class="container">
+    <div class="section-header">
+      <h2>Catálogo de <span class="highlight">Estrenos</span></h2>
+      <p>Explora los títulos más jugados de la temporada.</p>
+    </div>
+
+    <div class="grid-catalog">
+      <div class="game-card" *ngFor="let game of games">
+        <div class="card-image">
+          <img [src]="game.image" [alt]="game.title">
+          <span class="tag">{{ game.tag }}</span>
+        </div>
+        
+        <div class="card-body">
+          <span class="genre">{{ game.genre }}</span>
+          <h3>{{ game.title }}</h3>
+          
+          <div class="card-footer">
+            <span class="price">{{ game.price === 0 ? 'FREE' : '$' + game.price }}</span>
+            <button class="btn-buy" (click)="addToCart(game.title)">
+              Añadir
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

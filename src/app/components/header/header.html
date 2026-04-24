@@ -1,0 +1,19 @@
+<header class="header">
+  <div class="logo">
+    <span class="highlight">ALVAREZ</span> GAMES
+  </div>
+
+  <nav class="nav">
+    <ul>
+      <li *ngFor="let link of navLinks">
+        <a [href]="link.link">{{ link.name }}</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="header-actions">
+    <button class="btn-login" (click)="login()">
+      {{ isLoggedIn ? 'Mi Perfil' : 'Iniciar Sesión' }}
+    </button>
+  </div>
+</header>

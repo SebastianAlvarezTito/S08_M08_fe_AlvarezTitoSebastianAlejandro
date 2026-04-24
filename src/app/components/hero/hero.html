@@ -1,0 +1,20 @@
+<section class="hero" [style.background-image]="'linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 1)), url(' + featuredGame.image + ')'">
+  <div class="hero-container">
+    <div class="hero-content">
+      <span class="badge" [style.color]="featuredGame.accentColor">
+        {{ featuredGame.subtitle }}
+      </span>
+      
+      <h1>{{ featuredGame.title }}</h1>
+      
+      <p>{{ featuredGame.description }}</p>
+      
+      <div class="hero-actions">
+        <button class="btn-primary">Reservar Ahora</button>
+        <button class="btn-outline" (click)="changeGame()">
+          Ver Próximo Estreno
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

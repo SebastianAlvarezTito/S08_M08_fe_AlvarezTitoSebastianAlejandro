@@ -1,0 +1,16 @@
+<section class="benefits" id="benefits">
+  <div class="container">
+    <div class="benefits-header">
+      <h2>¿Por qué elegir <span class="highlight">Alvarez Games</span>?</h2>
+      <p>Llevamos tu experiencia de juego al siguiente nivel con beneficios exclusivos.</p>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card" *ngFor="let item of benefits">
+        <div class="icon-box">{{ item.icon }}</div>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
